@@ -39,9 +39,11 @@ class GdbController:
             New GdbController object
         """
 
+        # 如果命令为空则执行默认命令
         if command is None:
             command = DEFAULT_GDB_LAUNCH_COMMAND
 
+        # 如果命令里不包含--interpreter=mi则发出警告提醒推荐用户添加该命令
         if not any([("--interpreter=mi" in c) for c in command]):
             logger.warning(
                 "Adding `--interpreter=mi3` (or similar) is recommended to get structured output. "

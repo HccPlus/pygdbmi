@@ -247,6 +247,7 @@ class IoManager:
             timeout_sec = 0
 
         # Ensure proper type of the mi command
+        # 将列表转换为换行符分隔的字符串
         if isinstance(mi_cmd_to_write, str):
             mi_cmd_to_write_str = mi_cmd_to_write
         elif isinstance(mi_cmd_to_write, list):
@@ -259,6 +260,7 @@ class IoManager:
 
         logger.debug("writing: %s", mi_cmd_to_write)
 
+        # 确保字符串结尾有换行符
         if not mi_cmd_to_write_str.endswith("\n"):
             mi_cmd_to_write_nl = mi_cmd_to_write_str + "\n"
         else:
